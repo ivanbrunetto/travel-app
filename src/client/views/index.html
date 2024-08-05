@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel App</title>
+    <link rel="icon" href="../images/travel_24dp.png">
+</head>
+
+<body>
+    <div class="container">
+        <header class="debug">
+            <h1 class="">Travel Planner</h1>
+        </header>
+        <div class="form-container">
+            <form action="">
+                <label for="destination">Where</label>
+                <input 
+                    type="text" 
+                    id="destination" 
+                    name="destination"
+                    placeholder="Enter destination"
+                >
+                <label for="start-date">Start</label>
+                <input 
+                    type="date" 
+                    id="start-date" 
+                    name="start-date"
+                    placeholder="Add date"
+                >
+                <label for="end-date">End</label>
+                <input 
+                    type="date" 
+                    id="end-date" 
+                    name="end-date"
+                    placeholder="Add date"
+                >
+                <button class="">Add</button>
+            </form>
+        </div>
+    </div>    
+
+    <main class="debug">
+        <section class=" debug trip-card-container">
+            <div class=" debug trip-card">
+                <div class="trip-card__image">
+                    <img src="http://via.placeholder.com/300x300" alt="">
+                </div>
+                <div class="trip-card__info">
+                    <p>My Trip To:London</p>
+                    <p>Departing: date</p>
+                    <button>Remove</button>
+                    <p>London is 30 days away</p>
+                    <p>Typical weather for then is:</p>
+                    <p>weather info</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Footer placeholder
+    </footer>
+
+    <!-- <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script> -->
+</body>
+</html>

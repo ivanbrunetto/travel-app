@@ -1,0 +1,117 @@
+/* || VARIABLES */
+/* || VARIABLES */
+:root {
+    --COLOR-WHITE: white;
+    
+    --COLOR-GRAY-DARK: #4b5156;
+    --COLOR-GRAY: #b2b6b9;
+    --COLOR-GRAY-LIGHT: #e3e5e7;
+    --COLOR-GRAY-LIGHT2: #f5f5f5;
+    
+    --COLOR-BLUE: #6397ef;
+    --COLOR-WOOD: rgba(180,159,137,1);
+}
+
+/* || UTILITY CLASSES */
+.debug {
+    /* background-color: burlywood; */
+    border: 1px solid red;
+}
+
+/* || GENERAL STYLES */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+form {
+    padding: 5px;
+}
+
+
+/* || BLOCKS */
+/* naming: .blk */
+.trip-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* || ELEMENTS */
+/* no standalone meaning - semantically tied to the block */
+/* naming: .blk__item */
+.trip-card__image {
+    
+}
+
+.trip-card__info {
+    
+}
+
+
+/* || MODIFIERS */
+/* inremental style changes  */
+/* naming: .blk--mod */
+
+
+
+@media (min-width: 600px) {
+    .trip-card {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "img info info info";
+    }
+
+    .trip-card__image {
+        grid-area: img;
+    }
+    
+    .trip-card__info {
+        grid-area: info;
+    }
+
+}
+  
+  
+@media (min-width: 1200px) {
+    .trip-card {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "img info info info";
+    }
+
+    .trip-card__image {
+        grid-area: img;
+    }
+    
+    .trip-card__info {
+        grid-area: info;
+    }
+   
+    
+}
+
+/* opacity: 1;
+color: rgba(180,159,137,1);
+font-family: "PlayfairDisplay-Regular";
+font-size: 272px;
+font-weight: 400;
+font-style: normal;
+letter-spacing: 0px;
+text-align: center;
+text-transform: uppercase; */
