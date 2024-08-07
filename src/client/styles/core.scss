@@ -1,4 +1,12 @@
-/* || VARIABLES */
+//Font
+@font-face {
+    font-family: 'Roboto Light';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(../fonts/Roboto-Light.ttf);
+}
+
 /* || VARIABLES */
 :root {
     --COLOR-WHITE: white;
@@ -24,6 +32,9 @@
     border-radius: 10%;
 } 
 /* || GENERAL STYLES */
+html {
+    font-family: 'Roboto Light';
+}
 
 body {
     display: flex;
@@ -43,7 +54,12 @@ section {
 }
 
 input {
+    font-family: inherit;
     border: none;
+}
+
+input[type='date'] {
+    font-family: inherit;
 }
 
 /* || BLOCKS */
