@@ -10,42 +10,60 @@
 <body>
     <div class="header-container">
         <header class="">
-            <h1 class="">Travel Planner</h1>
+            <h1 class="header-title">Travel Planner</h1>
         </header>
-        <div class="form-container">
-            <form class="form-container__form" action="">
-                <div class="form-container__item">
-                    <label for="destination">Where</label>
-                    <input 
-                        type="text" 
-                        id="destination" 
-                        name="destination"
-                        placeholder="Enter destination"
-                    >
+        <div class="add-trip-container">
+            <form class="add-trip-bar" action="">
+                <div class="add-trip-bar__item">
+                    <label class="add-trip-bar__label" for="destination">
+                        <div>
+                            <div>Where</div>
+                            <input 
+                                type="text" 
+                                id="destination" 
+                                name="destination"
+                                placeholder="Enter destination"
+                                size="15"
+                            >
+                        </div>
+                        
+                    </label>
                 </div>
-                <div class="form-container__item">
-                    <label for="start-date">Start</label>
-                    <input 
-                        type="date" 
-                        id="start-date" 
-                        name="start-date"
-                        placeholder="Add date"
-                    >
+                <div class="add-trip-bar__item-divider"></div>
+                <div class="add-trip-bar__item">
+                    <label class="add-trip-bar__label" for="start-date">
+                        <div>
+                            <div>Start</div>
+                            <input 
+                                type="date" 
+                                id="start-date" 
+                                name="start-date"
+                                placeholder="Add date"
+                            >
+                        </div>
+                    </label>
                 </div>
-                <div class="form-container__item">
-                    <label for="end-date">End</label>
-                    <input 
-                        type="date" 
-                        id="end-date" 
-                        name="end-date"
-                        placeholder="Add date"
-                    >
+                <div class="add-trip-bar__item-divider"></div>
+                <div class="add-trip-bar__item">
+                    <label class="add-trip-bar__label" for="end-date">
+                        <div>
+                            <div>End</div>
+                            <input 
+                                type="date" 
+                                id="end-date" 
+                                name="end-date"
+                                placeholder="Add date"
+                            >
+                        </div>
+                    </label>
                 </div>
-                <div class="form-container__item">
-                    <a class="add-button" href="">
-                        <img width="20px" src="../images/add_circle_32_white.png" alt="">
-                        <p class="add-button__item">Add</p>
-                    </a>
+                <div class="add-trip-bar__item">
+                    <div class="button-container">
+                        <a class="add-button" href="">
+                            <img width="20px" src="../images/add_circle_32_white.png" alt="">
+                            <p class="add-button__item">Add</p>
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>
