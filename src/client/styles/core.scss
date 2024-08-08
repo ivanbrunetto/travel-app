@@ -47,7 +47,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    padding: 10px 40px;
+    padding: 24px;
 }
 
 section {
@@ -65,23 +65,24 @@ input {
 
 /* || BLOCKS */
 /* naming: .blk */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .header-title {
     font-weight: bold;
     font-size: 1.5em;
     color: var(--COLOR-GREEN);
     
 }
-.add-trip-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
 
-.add-trip-bar {
+ .add-trip-bar {
     display: flex;
+    flex-direction: column;
     align-items: center;
     border: 1px solid var(--COLOR-GRAY-LIGHT);
-    border-radius: 32px;
+    border-radius: 24px;
     box-shadow: 
         0px 3px 12px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
     font-size: small;
@@ -90,7 +91,7 @@ input {
 
 
 .button-container {
-    padding: 14px 14px 14px 0px;
+    padding: 12px;
 }
 
 .add-button {
@@ -101,14 +102,15 @@ input {
     color: var(--COLOR-WHITE);
     font-size: small;
     padding: 12px 20px 12px 20px;
+    width: 120px;
     height: 35px;
     background-color: var(--COLOR-GREEN);
 }
 
 .divider {
     border-bottom: 1px solid var(--COLOR-GRAY-LIGHT);
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: 24px;
+    width: 95%;
 }
 
 .trip-card {
@@ -126,12 +128,11 @@ input {
 }
 
 .add-trip-bar__label {
-    padding: 14px 24px 14px 24px;
+    padding: 12px 6px 8px 12px;
 }
 
 .add-trip-bar__item-divider {
-    border-left: 1px solid var(--COLOR-GRAY-LIGHT);
-    height: 32px;
+    border-left: none;
 }
 
 .add-button__item {
@@ -155,6 +156,27 @@ input {
 
 
 @media (min-width: 600px) {
+    .add-trip-bar {
+        flex-direction: row;
+    }
+
+    .button-container {
+        padding: 14px 14px 14px 0px;
+    }
+    
+    .add-button {
+        width: auto;
+    }
+    
+    .add-trip-bar__label {
+        padding: 14px 18px 14px 24px;
+    }
+
+    .add-trip-bar__item-divider {
+        border-left: 1px solid var(--COLOR-GRAY-LIGHT);
+        height: 32px;
+    }
+
     .trip-card {
         display: grid;
         grid-template-columns: 1fr 3fr;
@@ -175,23 +197,7 @@ input {
   
   
 @media (min-width: 1200px) {
-    .trip-card {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-        "img info info info";
-    }
-
-    .trip-card__image {
-        grid-area: img;
-    }
-    
-    .trip-card__info {
-        grid-area: info;
-    }
-   
-    
+        
 }
 
 /* opacity: 1;
