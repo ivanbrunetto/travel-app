@@ -14,10 +14,10 @@
         </header>
         <form class="add-trip-bar" action="">
             <div class="add-trip-bar__item">
-                <label class="add-trip-bar__label" for="destination">
+                <div class="add-trip-bar__item-container">
                     <div>
                         <div>Where</div>
-                        <input 
+                        <input class="add-trip-bar__dest"
                             type="text" 
                             id="destination" 
                             name="destination"
@@ -25,12 +25,11 @@
                             size="14"
                         >
                     </div>
-                    
-                </label>
+                </div>
             </div>
             <div class="add-trip-bar__item-divider"></div>
             <div class="add-trip-bar__item">
-                <label class="add-trip-bar__label" for="start-date">
+                <div class="add-trip-bar__item-container">
                     <div>
                         <div>Start</div>
                         <input 
@@ -40,11 +39,11 @@
                             placeholder="Add date"
                         >
                     </div>
-                </label>
+                </div>
             </div>
             <div class="add-trip-bar__item-divider"></div>
             <div class="add-trip-bar__item">
-                <label class="add-trip-bar__label" for="end-date">
+                <div class="add-trip-bar__item-container">
                     <div>
                         <div>End</div>
                         <input 
@@ -54,7 +53,7 @@
                             placeholder="Add date"
                         >
                     </div>
-                </label>
+                </div>
             </div>
             <div class="add-trip-bar__item">
                 <div class="button-container">
@@ -72,7 +71,7 @@
         <section class=" debug trip-card-container">
             <div class=" debug trip-card">
                 <div class="trip-card__image">
-                    <img src="http://via.placeholder.com/300x300" alt="">
+                    <img src="../images/cathedral-1280.jpg" alt="Destination photo">
                 </div>
                 <div class="trip-card__info">
                     <p>My Trip To:London</p>
