@@ -6,6 +6,6 @@ import './styles/resets.scss';
 import './styles/core.scss';
 
 
-export { 
+export {
     app,
 };

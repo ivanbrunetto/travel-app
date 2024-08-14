@@ -1,93 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel App</title>
-    <link rel="icon" href="../images/travel_24dp.png">
-</head>
+    <link rel="icon" href="../images/travel_24dp.png" />
+  </head>
 
-<body>
+  <body>
     <div class="header-container">
-        <header class="">
-            <h1 class="header-title">Travel Planner</h1>
-        </header>
-        <form class="add-trip-bar" action="">
-            <div class="add-trip-bar__item">
-                <div class="add-trip-bar__item-container">
-                    <div>
-                        <div>Where</div>
-                        <input class="add-trip-bar__dest"
-                            type="text" 
-                            id="destination" 
-                            name="destination"
-                            placeholder="Enter destination"
-                            size="14"
-                        >
-                    </div>
-                </div>
+      <header class="">
+        <h1 class="header-title">Travel Planner</h1>
+      </header>
+      <form class="add-trip-bar" action="">
+        <div class="add-trip-bar__item">
+          <div class="add-trip-bar__item-container">
+            <div>
+              <div>Where</div>
+              <input
+                class="add-trip-bar__dest"
+                type="text"
+                id="destination"
+                name="destination"
+                placeholder="Enter destination"
+                size="14"
+              />
             </div>
-            <div class="add-trip-bar__item-divider"></div>
-            <div class="add-trip-bar__item">
-                <div class="add-trip-bar__item-container">
-                    <div>
-                        <div>Start</div>
-                        <input 
-                            type="date" 
-                            id="start-date" 
-                            name="start-date"
-                            placeholder="Add date"
-                        >
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="add-trip-bar__item-divider"></div>
+        <div class="add-trip-bar__item">
+          <div class="add-trip-bar__item-container">
+            <div>
+              <div>Start</div>
+              <input
+                type="date"
+                id="start-date"
+                name="start-date"
+                placeholder="Add date"
+              />
             </div>
-            <div class="add-trip-bar__item-divider"></div>
-            <div class="add-trip-bar__item">
-                <div class="add-trip-bar__item-container">
-                    <div>
-                        <div>End</div>
-                        <input 
-                            type="date" 
-                            id="end-date" 
-                            name="end-date"
-                            placeholder="Add date"
-                        >
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="add-trip-bar__item-divider"></div>
+        <div class="add-trip-bar__item">
+          <div class="add-trip-bar__item-container">
+            <div>
+              <div>End</div>
+              <input
+                type="date"
+                id="end-date"
+                name="end-date"
+                placeholder="Add date"
+              />
             </div>
-            <div class="add-trip-bar__item">
-                <div class="button-container">
-                    <a class="add-button" href="">
-                        <img width="20px" src="../images/add_circle_32_white.png" alt="">
-                        <p class="add-button__item">Add</p>
-                    </a>
-                </div>
-            </div>
-        </form>
-        <div class="divider"></div>
-    </div>    
+          </div>
+        </div>
+        <div class="add-trip-bar__item">
+          <div class="button-container">
+            <a class="add-button" href="">
+              <img
+                width="20px"
+                src="../images/add_circle_32_white.png"
+                alt=""
+              />
+              <p class="add-button__item">Add</p>
+            </a>
+          </div>
+        </div>
+      </form>
+      <div class="divider"></div>
+    </div>
 
     <main class="">
-        <section class=" debug trip-card-container">
-            <div class=" debug trip-card">
-                <div class="trip-card__image">
-                    <img src="../images/cathedral-1280.jpg" alt="Destination photo">
-                </div>
-                <div class="trip-card__info">
-                    <p>My Trip To:London</p>
-                    <p>Departing: date</p>
-                    <button>Remove</button>
-                    <p>London is 30 days away</p>
-                    <p>Typical weather for then is:</p>
-                    <p>weather info</p>
-                </div>
+      <section class="trip-list">
+        <!-- <div class="trip-list__item"> -->
+        <div class="trip-card">
+          <!-- <div class="trip-card__image-container"> -->
+          <img
+            class="trip-card__image"
+            src="../images/cathedral-1280.jpg"
+            alt="Destination photo"
+          />
+          <!-- </div> -->
+          <div class="trip-card__info">
+            <div class="trip-card__info-item">
+              <p class="trip-card__info-title">My Trip To: London, England</p>
+              <p class="trip-card__info-title">Departing: 01/10/2025</p>
             </div>
-        </section>
+
+            <div class="trip-card__info-item">
+              <p class="trip-card__info-text">London is 30 days away!</p>
+            </div>
+
+            <div class="trip-card__info-item">
+              <p class="trip-card__info-text">Typical weather for then is:</p>
+              <p class="trip-card__info-text">
+                High - 38, Low - 28<br>
+                Mostly cloudy throughout the day
+            </p>
+            </div>
+          </div>
+          <!-- </div> -->
+          <!-- <button class="">Remove</button> -->
+        </div>
+        <div class="trip-card">
+          <!-- <div class="trip-card__image-container"> -->
+          <img
+            class="trip-card__image"
+            src="../images/cathedral-1280.jpg"
+            alt="Destination photo"
+          />
+          <!-- </div> -->
+          <div class="trip-card__info">
+            <p class="trip-card__info-item trip-card__info-title">
+              My Trip To: London, England
+            </p>
+            <p class="trip-card__info-item trip-card__info-title">
+              Departing: date
+            </p>
+            <p class="trip-card__info-item trip-card__info-text">
+              London is 30 days away
+            </p>
+            <p class="trip-card__info-item trip-card__info-text">
+              Typical weather for then is:
+            </p>
+            <p class="trip-card__info-item trip-card__info-text">
+              weather info
+            </p>
+          </div>
+          <!-- </div> -->
+          <!-- <button class="">Remove</button> -->
+        </div>
+      </section>
     </main>
 
-    <footer>
-        Footer placeholder
-    </footer>
+    <footer>Footer placeholder</footer>
 
     <!-- <script>
         // Check that service workers are supported
@@ -98,5 +146,5 @@
             });
         }
     </script> -->
-</body>
+  </body>
 </html>
