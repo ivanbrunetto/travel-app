@@ -17,8 +17,11 @@
   --COLOR-GRAY-LIGHT: #e3e5e7;
   --COLOR-GRAY-LIGHT2: #f5f5f5;
 
+  --COLOR-GREEN-DARK: #293f32;
   --COLOR-GREEN: #137353;
-  --COLOR-DARK-GREEN: #293f32;
+  --COLOR-GREEN-LIGHT: #5edcb2;
+  
+  
   --COLOR-WOOD: rgba(180, 159, 137, 1);
 }
 
@@ -40,7 +43,9 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
+  
 }
 
 header {
@@ -49,12 +54,24 @@ header {
   padding: 24px;
 }
 
+
 input {
   font-family: inherit;
   font-size: inherit;
   font-weight: bold;
   border: none;
   outline: none;
+}
+
+footer {
+    /* position: absolute;
+    bottom: 10px;
+     */
+    height: 160px;
+    width: 100%;
+    color: var(--COLOR-WHITE);
+    background-color: var(--COLOR-WOOD);
+    padding: 20px;
 }
 
 /* || BLOCKS */
