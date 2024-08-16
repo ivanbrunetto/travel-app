@@ -20,8 +20,7 @@
   --COLOR-GREEN-DARK: #293f32;
   --COLOR-GREEN: #137353;
   --COLOR-GREEN-LIGHT: #5edcb2;
-  
-  
+
   --COLOR-WOOD: rgba(180, 159, 137, 1);
 }
 
@@ -45,7 +44,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  
 }
 
 header {
@@ -53,7 +51,6 @@ header {
   justify-content: space-between;
   padding: 24px;
 }
-
 
 input {
   font-family: inherit;
@@ -64,14 +61,11 @@ input {
 }
 
 footer {
-    /* position: absolute;
-    bottom: 10px;
-     */
-    height: 160px;
-    width: 100%;
-    color: var(--COLOR-WHITE);
-    background-color: var(--COLOR-WOOD);
-    padding: 20px;
+  height: 120px;
+  width: 100%;
+  color: var(--COLOR-WHITE);
+  background-color: var(--COLOR-WOOD);
+  padding: 20px;
 }
 
 /* || BLOCKS */
@@ -141,7 +135,6 @@ footer {
   box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1),
     0px 1px 2px 0px rgba(0, 0, 0, 0.08);
 }
-
 
 /* || ELEMENTS */
 /* no standalone meaning - semantically tied to the block */
