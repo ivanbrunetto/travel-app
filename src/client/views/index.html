@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Travel App</title>
-    <link rel="icon" href="../images/travel_24dp.png" />
+    <link rel="icon" href="../images/travel_24dp.png"/>
   </head>
 
   <body>
@@ -13,7 +13,7 @@
         <header class="">
           <h1 class="header-title">Travel Planner</h1>
         </header>
-        <form class="add-trip-bar" action="">
+        <form class="add-trip-bar" action="" method="post">
           <div class="add-trip-bar__item">
             <div class="add-trip-bar__item-container">
               <div>
@@ -34,12 +34,7 @@
             <div class="add-trip-bar__item-container">
               <div>
                 <div>Start</div>
-                <input
-                  type="date"
-                  id="start-date"
-                  name="start-date"
-                  placeholder="Add date"
-                />
+                <input type="date" id="start-date" name="start-date"/>
               </div>
             </div>
           </div>
@@ -48,23 +43,14 @@
             <div class="add-trip-bar__item-container">
               <div>
                 <div>End</div>
-                <input
-                  type="date"
-                  id="end-date"
-                  name="end-date"
-                  placeholder="Add date"
-                />
+                <input type="date" id="end-date" name="end-date"/>
               </div>
             </div>
           </div>
           <div class="add-trip-bar__item">
             <div class="add-trip-bar__button-container">
               <button class="green-button add-button">
-                <img
-                  width="20px"
-                  src="../images/add_circle_32_white.png"
-                  alt=""
-                />
+                <img src="../images/add_circle_32_white.png" width="20" alt=""/>
                 &nbsp;&nbsp;Add
               </button>
             </div>
@@ -74,7 +60,7 @@
       </div>
 
       <main class="">
-        <section class="trip-list">
+        <div class="trip-list">
           <div class="trip-card">
             <img
               class="trip-card__image"
@@ -94,18 +80,14 @@
               <div class="trip-card__info-item">
                 <p class="trip-card__info-text">Typical weather for then is:</p>
                 <p class="trip-card__info-text">
-                  High - 38, Low - 28<br />
+                  High - 38, Low - 28<br/>
                   Mostly cloudy throughout the day
                 </p>
               </div>
             </div>
             <div class="trip-card__button-container">
               <button class="green-button remove-button">
-                <img
-                  width="20px"
-                  src="../images/remove_circle_32_white.png"
-                  alt=""
-                />
+                <img src="../images/remove_circle_32_white.png" width="20" alt=""/>
                 &nbsp;&nbsp;Remove
               </button>
             </div>
@@ -136,22 +118,18 @@
             </div>
             <div class="trip-card__button-container">
               <button class="green-button remove-button">
-                <img
-                  width="20px"
-                  src="../images/remove_circle_32_white.png"
-                  alt=""
-                />
+                <img src="../images/remove_circle_32_white.png" width="20" alt=""/>
                 &nbsp;&nbsp;Remove
               </button>
             </div>
           </div>
-        </section>
+        </div>
       </main>
     </div>
     <footer>
       <h2>Travel Planner app project</h2>
-      <br />
-      <p>&copy Copyright Ivan</p>
+      <br/>
+      <p>&copy; Copyright Ivan</p>
     </footer>
 
     <!-- <script>
