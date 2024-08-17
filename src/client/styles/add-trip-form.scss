@@ -1,0 +1,79 @@
+@use 'core';
+
+/* || VARIABLES */
+
+/* || UTILITY CLASSES */
+
+/* || GENERAL STYLES */
+
+/* || BLOCKS */
+.add-trip-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid core.$COLOR-GRAY-LIGHT;
+  border-radius: 24px;
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+  font-size: small;
+  font-weight: bold;
+}
+
+/* || ELEMENTS */
+.add-trip-form__input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 6px 8px 12px;
+}
+
+.add-trip-form__input {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+
+.form__divider {
+  border-left: none;
+}
+
+.form__button-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.form__button {
+  @extend %button;
+  width: auto;
+}
+
+/* || MODIFIERS */
+
+/* || MEDIA SELECTORS */
+
+@media (min-width: 600px) {
+  .add-trip-form {
+    flex-direction: row;
+  }
+
+  .add-trip-bar__label {
+    padding: 14px 18px 14px 24px;
+  }
+
+  .form__button-container {
+    padding: 14px 14px 14px 0px;
+  }
+
+  .form__divider {
+    border-left: 1px solid core.$COLOR-GRAY-LIGHT;
+    height: 32px;
+  }
+}
+
+@media (min-width: 900px) {
+}
+
+@media (min-width: 1200px) {
+}

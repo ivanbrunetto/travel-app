@@ -1,4 +1,19 @@
-/* Font */
+/* || VARIABLES */
+$COLOR-WHITE: white;
+$COLOR-OFFWHITE: #f1e6d6;
+
+$COLOR-GRAY-DARK: #4b5156;
+$COLOR-GRAY: #b2b6b9;
+$COLOR-GRAY-LIGHT: #e3e5e7;
+$COLOR-GRAY-LIGHT2: #f5f5f5;
+
+$COLOR-GREEN-DARK: #293f32;
+$COLOR-GREEN: #137353;
+$COLOR-GREEN-LIGHT: #5edcb2;
+
+$COLOR-WOOD: rgba(180, 159, 137, 1);
+
+/* || FONT */
 @font-face {
   font-family: "Roboto Light";
   font-style: normal;
@@ -7,352 +22,24 @@
   src: url(../fonts/Roboto-Light.ttf);
 }
 
-/* || VARIABLES */
-:root {
-  --COLOR-WHITE: white;
-  --COLOR-OFFWHITE: #f1e6d6;
-
-  --COLOR-GRAY-DARK: #4b5156;
-  --COLOR-GRAY: #b2b6b9;
-  --COLOR-GRAY-LIGHT: #e3e5e7;
-  --COLOR-GRAY-LIGHT2: #f5f5f5;
-
-  --COLOR-GREEN-DARK: #293f32;
-  --COLOR-GREEN: #137353;
-  --COLOR-GREEN-LIGHT: #5edcb2;
-
-  --COLOR-WOOD: rgba(180, 159, 137, 1);
-}
-
-/* || UTILITY CLASSES */
-.debug {
-  background-color: burlywood;
-  border: 1px solid red;
-}
-
-.circle {
-  border-radius: 10%;
-}
-
-/* || GENERAL STYLES */
-html {
-  font-family: "Roboto Light";
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 24px;
-}
-
-input {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: bold;
-  border: none;
-  outline: none;
-}
-
-footer {
-  height: 120px;
-  width: 100%;
-  color: var(--COLOR-WHITE);
-  background-color: var(--COLOR-WOOD);
-  padding: 20px;
-}
-
-/* || BLOCKS */
-/* naming: .blk */
-.header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header-title {
-  font-weight: bold;
-  font-size: 2.4em;
-  color: var(--COLOR-GREEN);
-}
-
-.add-trip-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid var(--COLOR-GRAY-LIGHT);
-  border-radius: 24px;
-  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1),
-    0px 1px 2px 0px rgba(0, 0, 0, 0.08);
-  font-size: small;
-  font-weight: bold;
-}
-
-.green-button {
+/* || PLACEHOLDER CLASSES */
+%button {
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: 2em;
   text-decoration: none;
-  color: var(--COLOR-WHITE);
+  color: $COLOR-WHITE;
   font-size: small;
   padding: 12px 20px 12px 20px;
   width: 120px;
   height: 35px;
-  background-color: var(--COLOR-GREEN);
+  background-color: $COLOR-GREEN;
 }
 
-.divider {
-  border-bottom: 1px solid var(--COLOR-GRAY-LIGHT);
-  margin-top: 24px;
-  width: 95%;
-}
-
-.trip-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px;
-}
-
-.trip-card {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-
-  border: 1px solid var(--COLOR-GREEN);
-  border-radius: 30px;
-  padding: 13px;
-  margin-bottom: 13px;
-
-  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1),
-    0px 1px 2px 0px rgba(0, 0, 0, 0.08);
-}
-
-/* || ELEMENTS */
-/* no standalone meaning - semantically tied to the block */
-/* naming: .blk__item */
-.add-trip-bar__item {
-  display: flex;
-  flex-direction: column;
-}
-
-.add-trip-bar__item-container {
-  padding: 12px 6px 8px 12px;
-}
-
-.add-trip-bar__item-divider {
-  border-left: none;
-}
-
-.add-trip-bar__button-container {
-  padding: 12px;
-}
-
-.trip-list__item {
-  display: flex;
-  flex-direction: column;
-}
-
-.trip-card__image {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 30px;
-}
-
-.trip-card__info {
-  padding: 10px;
-  width: 100%;
-}
-
-.trip-card__info-item {
-  margin-bottom: 22px;
-}
-
-.trip-card__info-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.trip-card__info-text {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-}
-
-.trip-card__button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: center;
-  align-self: end;
-}
-
-/* || MODIFIERS */
-/* inremental style changes  */
-/* naming: .blk--mod */
-
-@media (min-width: 600px) {
-  .header-title {
-    font-size: 2.6rem;
-  }
-  .add-trip-bar {
-    flex-direction: row;
-  }
-
-  .add-trip-bar__button-container {
-    padding: 14px 14px 14px 0px;
-  }
-
-  .add-button {
-    width: auto;
-  }
-
-  .add-trip-bar__label {
-    padding: 14px 18px 14px 24px;
-  }
-
-  .add-trip-bar__item-divider {
-    border-left: 1px solid var(--COLOR-GRAY-LIGHT);
-    height: 32px;
-  }
-
-  .trip-list {
-    margin: 60px;
-  }
-
-  .trip-card {
-    margin-bottom: 18px;
-  }
-
-  .trip-card__image {
-    height: 320px;
-  }
-
-  .trip-card__info-item {
-    margin-bottom: 24px;
-  }
-
-  .trip-card__info-title {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-  }
-
-  .trip-card__info-text {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-  }
-
-  .remove-button {
-    font-size: medium;
-    width: 160px;
-    height: 45px;
-  }
-}
-
-@media (min-width: 900px) {
-  .trip-card {
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "img info"
-      "img btn";
-  }
-
-  .trip-card__image {
-    grid-area: img;
-    max-width: 380px;
-    height: 360px;
-  }
-
-  .trip-card__info {
-    grid-area: info;
-  }
-
-  .trip-card__info-item {
-    margin-bottom: 26px;
-  }
-
-  .trip-card__info-title {
-    font-size: 1.6rem;
-    margin-bottom: 14px;
-  }
-
-  .trip-card__info-text {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-  }
-
-  .trip-card__button-container {
-    grid-area: btn;
-  }
-}
-
-@media (min-width: 1200px) {
-  .header-title {
-    font-size: 2.8em;
-  }
-
-  .add-trip-bar {
-    font-size: medium;
-    border-radius: 28px;
-  }
-
-  .add-trip-bar__item-container {
-    padding: 16px 10px 12px 16px;
-  }
-
-  .add-trip-bar__dest {
-    width: 180px;
-  }
-
-  .add-trip-bar__button-container {
-    padding: 16px 16px 16px 0px;
-  }
-
-  .add-button {
-    font-size: small;
-    padding: 12px 20px 12px 20px;
-    width: 110px;
-    height: 40px;
-  }
-
-  .trip-card {
-    max-width: 1400px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .trip-card__image {
-    max-width: 460px;
-    height: 400px;
-  }
-
-  .trip-card__info-item {
-    margin-bottom: 28px;
-  }
-
-  .trip-card__info-title {
-    font-size: 2rem;
-    margin-bottom: 18px;
-  }
-
-  .trip-card__info-text {
-    font-size: 1.6rem;
-    margin-bottom: 14px;
-  }
-
-  .remove-button {
-    font-size: large;
-    width: 190px;
-    height: 55px;
-  }
+/* || UTILITY CLASSES */
+.debug {
+  background-color: burlywood;
+  border: 1px solid red;
 }
