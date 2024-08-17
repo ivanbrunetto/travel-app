@@ -1,141 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel App</title>
-    <link rel="icon" href="../images/travel_24dp.png" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Travel App</title>
+        <link rel="icon" href="../images/travel_24dp.png" />
+    </head>
 
-  <body>
-    <div>
-      <div class="header-container">
-        <header class="header">Travel Planner</header>
-        <form class="add-trip-form" action="" method="post">
-          <div class="add-trip-form__input-container">
-            <label for="destination">Where</label>
-            <input
-              class="add-trip-form__input"
-              type="text"
-              id="destination"
-              name="destination"
-              placeholder="Enter destination"
-              size="14"
-            />
-          </div>
-          <div class="form__divider"></div>
-          <div class="add-trip-form__input-container">
-            <label for="start-date">Start</label>
-            <input
-              class="add-trip-form__input"
-              type="date"
-              id="start-date"
-              name="start-date"
-            />
-          </div>
-          <div class="form__divider"></div>
-          <div class="add-trip-form__input-container">
-            <label for="end-date">End</label>
-            <input
-              class="add-trip-form__input"
-              type="date"
-              id="end-date"
-              name="end-date"
-            />
-          </div>
-          <div class="form__button-container">
-            <button class="form__button">
-              <img src="../images/add_circle_32_white.png" width="20" alt="" />
-              &nbsp;&nbsp;Add
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <div class="divider"></div>
-
-      <main>
-        <div class="trip-list">
-          <div class="trip-card">
-            <img
-              class="trip-card__image"
-              src="../images/cathedral-1280.jpg"
-              alt="Destination photo"
-            />
-            <div class="trip-card__info">
-              <div class="trip-card__text-box">
-                <p class="trip-card__title">My Trip To: London, England</p>
-                <p class="trip-card__title">Departing: 01/10/2025</p>
-              </div>
-
-              <div class="trip-card__text-box">
-                <p class="trip-card__text">London is 30 days away!</p>
-              </div>
-
-              <div class="trip-card__text-box">
-                <p class="trip-card__text">Typical weather for then is:</p>
-                <p class="trip-card__text">
-                  High - 38, Low - 28<br />
-                  Mostly cloudy throughout the day
-                </p>
-              </div>
+    <body>
+        <div>
+            <div class="header-container">
+                <header class="header">Travel Planner</header>
+                <form class="add-trip-form" action="" method="post">
+                    <div class="add-trip-form__input-container">
+                        <label for="destination">Where</label>
+                        <input
+                            class="add-trip-form__input"
+                            type="text"
+                            id="destination"
+                            name="destination"
+                            placeholder="Enter destination"
+                            size="14"
+                        />
+                    </div>
+                    <div class="form__divider"></div>
+                    <div class="add-trip-form__input-container">
+                        <label for="start-date">Start</label>
+                        <input
+                            class="add-trip-form__input"
+                            type="date"
+                            id="start-date"
+                            name="start-date"
+                        />
+                    </div>
+                    <div class="form__divider"></div>
+                    <div class="add-trip-form__input-container">
+                        <label for="end-date">End</label>
+                        <input
+                            class="add-trip-form__input"
+                            type="date"
+                            id="end-date"
+                            name="end-date"
+                        />
+                    </div>
+                    <div class="form__button-container">
+                        <button class="form__button">
+                            <img
+                                src="../images/add_circle_32_white.png"
+                                width="20"
+                                alt=""
+                            />
+                            &nbsp;&nbsp;Add
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="trip-card__button-container">
-              <button class="trip-card__button">
-                <img
-                  src="../images/remove_circle_32_white.png"
-                  width="20"
-                  alt=""
-                />
-                &nbsp;&nbsp;Remove
-              </button>
-            </div>
-          </div>
-          <div class="trip-card">
-            <img
-              class="trip-card__image"
-              src="../images/cathedral-1280.jpg"
-              alt="Destination photo"
-            />
-            <div class="trip-card__info">
-              <div class="trip-card__text-box">
-                <p class="trip-card__title">My Trip To: London, England</p>
-                <p class="trip-card__title">Departing: 01/10/2025</p>
-              </div>
 
-              <div class="trip-card__text-box">
-                <p class="trip-card__text">London is 30 days away!</p>
-              </div>
+            <div class="divider"></div>
 
-              <div class="trip-card__text-box">
-                <p class="trip-card__text">Typical weather for then is:</p>
-                <p class="trip-card__text">
-                  High - 38, Low - 28<br />
-                  Mostly cloudy throughout the day
-                </p>
-              </div>
-            </div>
-            <div class="trip-card__button-container">
-              <button class="trip-card__button">
-                <img
-                  src="../images/remove_circle_32_white.png"
-                  width="20"
-                  alt=""
-                />
-                &nbsp;&nbsp;Remove
-              </button>
-            </div>
-          </div>
+            <main>
+                <div class="trip-list">
+                    <div class="trip-card">
+                        <img
+                            class="trip-card__image"
+                            src="../images/cathedral-1280.jpg"
+                            alt="Destination photo"
+                        />
+                        <div class="trip-card__info">
+                            <div class="trip-card__text-box">
+                                <p class="trip-card__title">
+                                    My Trip To: London, England
+                                </p>
+                                <p class="trip-card__title">
+                                    Departing: 01/10/2025
+                                </p>
+                            </div>
+
+                            <div class="trip-card__text-box">
+                                <p class="trip-card__text">
+                                    London is 30 days away!
+                                </p>
+                            </div>
+
+                            <div class="trip-card__text-box">
+                                <p class="trip-card__text">
+                                    Typical weather for then is:
+                                </p>
+                                <p class="trip-card__text">
+                                    High - 38, Low - 28<br />
+                                    Mostly cloudy throughout the day
+                                </p>
+                            </div>
+                        </div>
+                        <div class="trip-card__button-container">
+                            <button class="trip-card__button">
+                                <img
+                                    src="../images/remove_circle_32_white.png"
+                                    width="20"
+                                    alt=""
+                                />
+                                &nbsp;&nbsp;Remove
+                            </button>
+                        </div>
+                    </div>
+                    <div class="trip-card">
+                        <img
+                            class="trip-card__image"
+                            src="../images/cathedral-1280.jpg"
+                            alt="Destination photo"
+                        />
+                        <div class="trip-card__info">
+                            <div class="trip-card__text-box">
+                                <p class="trip-card__title">
+                                    My Trip To: London, England
+                                </p>
+                                <p class="trip-card__title">
+                                    Departing: 01/10/2025
+                                </p>
+                            </div>
+
+                            <div class="trip-card__text-box">
+                                <p class="trip-card__text">
+                                    London is 30 days away!
+                                </p>
+                            </div>
+
+                            <div class="trip-card__text-box">
+                                <p class="trip-card__text">
+                                    Typical weather for then is:
+                                </p>
+                                <p class="trip-card__text">
+                                    High - 38, Low - 28<br />
+                                    Mostly cloudy throughout the day
+                                </p>
+                            </div>
+                        </div>
+                        <div class="trip-card__button-container">
+                            <button class="trip-card__button">
+                                <img
+                                    src="../images/remove_circle_32_white.png"
+                                    width="20"
+                                    alt=""
+                                />
+                                &nbsp;&nbsp;Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-      </main>
-    </div>
-    <footer class="footer">
-      <h2>Travel Planner app project</h2>
-      <br />
-      <p>Copyright &copy;2024 Ivan</p>
-    </footer>
+        <footer class="footer">
+            <h2>Travel Planner app project</h2>
+            <br />
+            <p>Copyright &copy;2024 Ivan</p>
+        </footer>
 
-    <!-- <script>
+        <!-- <script>
         // Check that service workers are supported
         if ('serviceWorker' in navigator) {
             // Use the window load event to keep the page load performant
@@ -144,5 +164,5 @@
             });
         }
     </script> -->
-  </body>
+    </body>
 </html>

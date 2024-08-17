@@ -1,4 +1,4 @@
-@use 'core';
+@use "core";
 
 /* || VARIABLES */
 
@@ -8,45 +8,45 @@
 
 /* || GENERAL STYLES */
 html {
-  font-family: "Roboto Light";
+    font-family: "Roboto Light";
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 /* || BLOCKS */
 /* naming: .blk */
 .header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  padding: 24px;
-  font-weight: bold;
-  font-size: 2.4em;
-  color: core.$COLOR-GREEN;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    font-weight: bold;
+    font-size: 2.4em;
+    color: core.$COLOR-GREEN;
 }
 
 .divider {
-  border-bottom: 1px solid core.$COLOR-GRAY-LIGHT;
-  margin-top: 24px;
-  width: 95%;
+    border-bottom: 1px solid core.$COLOR-GRAY-LIGHT;
+    margin-top: 24px;
+    width: 95%;
 }
 
 .footer {
-  height: 120px;
-  width: 100%;
-  color: core.$COLOR-WHITE;
-  background-color: core.$COLOR-WOOD;
-  padding: 20px;
+    height: 120px;
+    width: 100%;
+    color: core.$COLOR-WHITE;
+    background-color: core.$COLOR-WOOD;
+    padding: 20px;
 }
 
 /* || ELEMENTS */
@@ -60,13 +60,13 @@ body {
 /* || MEDIA SELECTORS */
 
 @media (min-width: 600px) {
-  .header {
-    font-size: 2.6rem;
-  }
+    .header {
+        font-size: 2.6rem;
+    }
 
-  .trip-list {
-    margin: 60px;
-  }
+    .trip-list {
+        margin: 60px;
+    }
 }
 
 @media (min-width: 900px) {

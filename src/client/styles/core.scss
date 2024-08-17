@@ -15,31 +15,31 @@ $COLOR-WOOD: rgba(180, 159, 137, 1);
 
 /* || FONT */
 @font-face {
-  font-family: "Roboto Light";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(../fonts/Roboto-Light.ttf);
+    font-family: "Roboto Light";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(../fonts/Roboto-Light.ttf);
 }
 
 /* || PLACEHOLDER CLASSES */
 %button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 2em;
-  text-decoration: none;
-  color: $COLOR-WHITE;
-  font-size: small;
-  padding: 12px 20px 12px 20px;
-  width: 120px;
-  height: 35px;
-  background-color: $COLOR-GREEN;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 2em;
+    text-decoration: none;
+    color: $COLOR-WHITE;
+    font-size: small;
+    padding: 12px 20px 12px 20px;
+    width: 120px;
+    height: 35px;
+    background-color: $COLOR-GREEN;
 }
 
 /* || UTILITY CLASSES */
 .debug {
-  background-color: burlywood;
-  border: 1px solid red;
+    background-color: burlywood;
+    border: 1px solid red;
 }
