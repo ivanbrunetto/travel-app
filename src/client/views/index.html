@@ -11,7 +11,12 @@
         <div>
             <div class="header-container">
                 <header class="header">Travel Planner</header>
-                <form class="add-trip-form" action="" method="post">
+                <form
+                    class="add-trip-form"
+                    id="add-trip-form"
+                    action=""
+                    method="post"
+                >
                     <div class="add-trip-form__input-container">
                         <label for="destination">Where</label>
                         <input
@@ -21,6 +26,7 @@
                             name="destination"
                             placeholder="Enter destination"
                             size="14"
+                            required
                         />
                     </div>
                     <div class="form__divider"></div>
@@ -31,6 +37,7 @@
                             type="date"
                             id="start-date"
                             name="start-date"
+                            required
                         />
                     </div>
                     <div class="form__divider"></div>
@@ -41,6 +48,7 @@
                             type="date"
                             id="end-date"
                             name="end-date"
+                            required
                         />
                     </div>
                     <div class="form__button-container">
@@ -59,7 +67,7 @@
             <div class="divider"></div>
 
             <main>
-                <div class="trip-list">
+                <div class="trip-list" id="trip-list">
                     <div class="trip-card">
                         <img
                             class="trip-card__image"

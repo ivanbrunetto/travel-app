@@ -49,6 +49,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "html-webpack-plugin": "^5.6.0",
+    "immutable": "^4.3.7",
     "style-loader": "^4.0.0",
     "webpack-dev-server": "^5.0.4"
   },
