@@ -33,11 +33,11 @@ export function composeBasicTripInfo() {
     const trip = {};
 
     trip.destination = document.getElementById('destination').value;
-    trip.departing = document.getElementById('start-date').value;
-    trip.returning = document.getElementById('end-date').value;
-    trip.duration = getDays(new Date(trip.departing), new Date(trip.returning));
-    trip.timeDistance = getDays(new Date(), new Date(trip.departing));
-
+    trip.departing = new Date(document.getElementById('start-date').value);
+    trip.returning = new Date(document.getElementById('end-date').value);
+    trip.duration = (trip.returning.getTime() - trip.departing.getTime()) / (1000 * 60 * 60 * 24);
+    const now = new Date();
+    trip.timeDistance = Math.floor((trip.departing.getTime() - now.getTime() + (now.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24)) + 1;
     return trip;
 }
 
@@ -97,7 +97,7 @@ function renderComponent(trip) {
                                     My Trip To: ${trip.destination}
                                 </p>
                                 <p class="trip-card__title">
-                                    Departing: ${trip.departing}
+                                    Departing: ${new Date(trip.departing.getTime() + (trip.departing.getTimezoneOffset() * 60 * 1000)).toDateString()}
                                 </p>
                             </div>
 
@@ -134,6 +134,7 @@ function renderComponent(trip) {
 }
 
 function getDays(startDate, endDate) {
-    return Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    console.log(startDate, endDate);
+    return Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
 }
 

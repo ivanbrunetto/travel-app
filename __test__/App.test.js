@@ -89,23 +89,23 @@ test('get geolocation different name', async () => {
 
 test('composeBasicTripInfo', () => {
     const duration = 10;
-    const timeDistance = 15;
-    const departing = Date.now() + (timeDistance * 1000 * 60 * 60 * 24);
-    const departingDate = new Date(departing);
-    const returning = departing + (duration * 1000 * 60 * 60 * 24);
-    const returningDate = new Date(returning);
+    const timeDistance = 1;
+
+    const departingDate = new Date(Date.now() + (timeDistance * 1000 * 60 * 60 * 24));
+    const departing = new Date(getDateString(departingDate));
+    const returning = new Date(departing.getTime() + (duration * 1000 * 60 * 60 * 24));
     const expTrip = {
         destination: 'expDest',
-        departing: `${departingDate.getFullYear()}-${getDateNumStr(departingDate.getMonth())}-${departingDate.getDate()}`,
-        returning: `${returningDate.getFullYear()}-${getDateNumStr(returningDate.getMonth())}-${returningDate.getDate()}`,
-        duration: duration + 1,
+        departing: departing,
+        returning: returning,
+        duration: duration,
         timeDistance: timeDistance
     }
 
     document.body.innerHTML = `
         <input type="text" id="destination" value="${expTrip.destination}"/>
-        <input type="date" id="start-date" value="${expTrip.departing}"/>
-        <input type="date" id="end-date" value="${expTrip.returning}"/>
+        <input type="date" id="start-date" value="${getDateString(new Date(expTrip.departing.getTime() + (expTrip.departing.getTimezoneOffset() * 60 * 1000)))}"/>
+        <input type="date" id="end-date" value="${getDateString(new Date(expTrip.returning.getTime() + (expTrip.returning.getTimezoneOffset() * 60 * 1000)))}"/>
     `;
 
     const trip = composeBasicTripInfo();
@@ -113,9 +113,20 @@ test('composeBasicTripInfo', () => {
 
 });
 
-function getDateNumStr(date) {
-    return date + 1 < 10 ? '0' + (date + 1) : (date + 1);
+function getDateString(date) {
+    let month = date.getMonth() + 1, day = date.getDate(), year = date.getFullYear();
+
+    if (month < 10) {
+        month = '0' + month;
+    }
+
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    return `${year}-${month}-${day}`;
 }
+
 
 test('validateDuration', () => {
     const mockAlert = jest.fn();
