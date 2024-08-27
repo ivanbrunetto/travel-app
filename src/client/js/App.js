@@ -5,7 +5,7 @@ const trips = Immutable.List([]);
 
 const serverURL = 'http://localhost:8000/api';
 
-export function formHandler(event) {
+export async function formHandler(event) {
     event.preventDefault();
 
     const trip = composeBasicTripInfo();
@@ -17,7 +17,11 @@ export function formHandler(event) {
         return;
     }
 
-    getGeoLocation(trip.destination).then(geoInfo => trip.geoInfo = geoInfo);
+    getGeoLocation(trip.destination).then(geoInfo => {
+        console.log(geoInfo);
+        trip.geoInfo = geoInfo;
+    });
+
 
     //TODO: get weatherinfo
     trip.weather = 'to be defined...'
@@ -60,20 +64,30 @@ export function validateDuration(trip) {
 
 export async function getGeoLocation(destination) {
     try {
-        const response = await fetch(`${serverURL}/latlong?${destination}`)
-        if (response.error) {
-            console.log(response.message);
-            alert(response.message);
+        const response = await fetch(`${serverURL}/latlong?city=${destination}`)
+        if (!response.ok) {
+            console.log('server response status: ', response.status);
+            alert('Could not get destination info');
             return;
         }
 
-        const geoName = response.data.geonames[0];
+        const json = await response.json();
+        if (json.error) {
+            console.log('Server error message: ', json.message);
+            alert('Could not get detination info');
+            return;
+        }
+
+        const geoName = json.data.geonames[0];
         if (destination.toLowerCase() === geoName.toponymName.toLowerCase()) {
             return {
                 destination: `${geoName.toponymName}, ${geoName.countryCode}`,
                 lat: geoName.lat,
                 lng: geoName.lng
             }
+        } else {
+            console.log('Could not find geoinfo with same destination name: ', destination);
+
         }
     } catch (err) {
         console.log(err.message);
@@ -132,9 +146,3 @@ function renderComponent(trip) {
     const tripListElement = document.getElementById('trip-list');
     tripListElement.appendChild(tripCard);
 }
-
-function getDays(startDate, endDate) {
-    console.log(startDate, endDate);
-    return Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-}
-
