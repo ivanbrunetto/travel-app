@@ -1,49 +1,84 @@
 import Immutable from 'immutable';
-import buttonIcon from '../images/remove_circle_32_white.png';
+//import buttonIcon from '../images/remove_circle_32_white.png';
 
 const trips = Immutable.List([]);
 
+const serverURL = 'http://localhost:8000/api';
 
 export function formHandler(event) {
     event.preventDefault();
-    console.log('addTrip clicked');
 
-    const destination = document.getElementById('destination').value;
-    console.log('Detination: ', destination);
+    const trip = composeBasicTripInfo();
 
-    const today = new Date();
-    const departing = document.getElementById('start-date').value
-    const startDate = new Date(departing);
-    const endDate = new Date(document.getElementById('end-date').value);
-    const durationDays = getDays(startDate, endDate);
-    if (durationDays <= 0) {
-        alert('End date must be greater then start date');
+    if (!validateStartDate(trip)) {
+        return;
+    }
+    if (!validateDuration(trip)) {
         return;
     }
 
-    const timeDistance = (getDays(today, startDate));
-    if (timeDistance < 0) {
-        alert('Trip must not be in the past');
-        return;
-    }
-
-    const trip = {
-        destination: destination,
-        departing: departing,
-        durationDays: durationDays,
-        timeDistance: timeDistance,
-    };
-
-    //TODO: get geolocation
+    getGeoLocation(trip.destination).then(geoInfo => trip.geoInfo = geoInfo);
 
     //TODO: get weatherinfo
     trip.weather = 'to be defined...'
 
     //TODO: get pic
-    trip.picSource = '';
+    trip.picSource = '/tbd.png';
 
     trips.push(Immutable.Map(trip));
     renderComponent(trip);
+}
+
+export function composeBasicTripInfo() {
+    const trip = {};
+
+    trip.destination = document.getElementById('destination').value;
+    trip.departing = document.getElementById('start-date').value;
+    trip.returning = document.getElementById('end-date').value;
+    trip.duration = getDays(new Date(trip.departing), new Date(trip.returning));
+    trip.timeDistance = getDays(new Date(), new Date(trip.departing));
+
+    return trip;
+}
+
+export function validateStartDate(trip) {
+    if (trip.timeDistance < 0) {
+        alert('Trip must not be in the past');
+        return false;
+    }
+    return true;
+}
+
+
+export function validateDuration(trip) {
+    if (trip.duration <= 0) {
+        alert('End date must be greater then start date');
+        return false;
+    }
+    return true;
+}
+
+export async function getGeoLocation(destination) {
+    try {
+        const response = await fetch(`${serverURL}/latlong?${destination}`)
+        if (response.error) {
+            console.log(response.message);
+            alert(response.message);
+            return;
+        }
+
+        const geoName = response.data.geonames[0];
+        if (destination.toLowerCase() === geoName.toponymName.toLowerCase()) {
+            return {
+                destination: `${geoName.toponymName}, ${geoName.countryCode}`,
+                lat: geoName.lat,
+                lng: geoName.lng
+            }
+        }
+    } catch (err) {
+        console.log(err.message);
+        alert('Server is down');
+    }
 }
 
 function renderComponent(trip) {
@@ -84,7 +119,7 @@ function renderComponent(trip) {
                         <div class="trip-card__button-container">
                             <button class="trip-card__button">
                                 <img
-                                    src=${buttonIcon}
+                                    src='../images/remove_circle_32_white.png'
                                     width="20"
                                     alt=""
                                 />
@@ -99,7 +134,6 @@ function renderComponent(trip) {
 }
 
 function getDays(startDate, endDate) {
-    console.log(endDate);
     return Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 }
 
