@@ -1,9 +1,9 @@
 import Immutable from 'immutable';
 //import buttonIcon from '../images/remove_circle_32_white.png';
+import { getGeoLocation } from './geolocation';
 
 const trips = Immutable.List([]);
 
-const serverURL = 'http://localhost:8000/api';
 
 export async function formHandler(event) {
     event.preventDefault();
@@ -17,20 +17,34 @@ export async function formHandler(event) {
         return;
     }
 
-    getGeoLocation(trip.destination).then(geoInfo => {
-        console.log(geoInfo);
-        trip.geoInfo = geoInfo;
-    });
+    /* if (!await validateGeoLocation(trip)) {
+        return;
+    } */
 
+    getGeoLocation(trip.destination)
+        .then(geoInfo => {
+            if (!geoInfo) {
+                alert(`Invalid destination '${trip.destination}' please try again`);
+                throw new Error();
+            }
+            trip.geoInfo = geoInfo;
+        })
+        .then(() => {
+            //TODO: get weatherinfo
+            trip.weather = 'to be defined...'
+        })
+        .then(() => {
+            //TODO: get pic
+            trip.picSource = '/tbd.png';
+        })
+        .then(() => {
+            trips.push(Immutable.Map(trip));
+            renderComponent(trip);
+        })
+        .catch(error => {
+            console.log(error);
+        })
 
-    //TODO: get weatherinfo
-    trip.weather = 'to be defined...'
-
-    //TODO: get pic
-    trip.picSource = '/tbd.png';
-
-    trips.push(Immutable.Map(trip));
-    renderComponent(trip);
 }
 
 export function composeBasicTripInfo() {
@@ -62,38 +76,15 @@ export function validateDuration(trip) {
     return true;
 }
 
-export async function getGeoLocation(destination) {
-    try {
-        const response = await fetch(`${serverURL}/latlong?city=${destination}`)
-        if (!response.ok) {
-            console.log('server response status: ', response.status);
-            alert('Could not get destination info');
-            return;
-        }
-
-        const json = await response.json();
-        if (json.error) {
-            console.log('Server error message: ', json.message);
-            alert('Could not get detination info');
-            return;
-        }
-
-        const geoName = json.data.geonames[0];
-        if (destination.toLowerCase() === geoName.toponymName.toLowerCase()) {
-            return {
-                destination: `${geoName.toponymName}, ${geoName.countryCode}`,
-                lat: geoName.lat,
-                lng: geoName.lng
-            }
-        } else {
-            console.log('Could not find geoinfo with same destination name: ', destination);
-
-        }
-    } catch (err) {
-        console.log(err.message);
-        alert('Server is down');
+export async function validateGeoLocation(trip) {
+    trip.geoInfo = await getGeoLocation(trip.destination);
+    if (!trip.geoInfo) {
+        alert(`Invalid destination '${trip.destination}' please try again`);
+        return false;
     }
+    return true;
 }
+
 
 function renderComponent(trip) {
     const tripCard = document.createElement('div');
@@ -108,7 +99,7 @@ function renderComponent(trip) {
                         <div class="trip-card__info">
                             <div class="trip-card__text-box">
                                 <p class="trip-card__title">
-                                    My Trip To: ${trip.destination}
+                                    My Trip To: ${trip.geoInfo.destination}
                                 </p>
                                 <p class="trip-card__title">
                                     Departing: ${new Date(trip.departing.getTime() + (trip.departing.getTimezoneOffset() * 60 * 1000)).toDateString()}
