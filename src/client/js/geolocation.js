@@ -4,16 +4,16 @@ const serverURL = 'http://localhost:8000/api';
 export async function getGeoLocation(destination) {
     try {
         const response = await fetch(`${serverURL}/latlong?city=${destination}`)
-        if (!response.ok) {
+        /* if (!response.ok) {
             console.log('server response status: ', response.status);
             alert('Could not get destination info');
             return;
-        }
+        } */
 
         const json = await response.json();
         if (json.error) {
             console.log('Server error message: ', json.message);
-            alert('Could not get detination info');
+            alert('Could not get detination (geo) info');
             return;
         }
 
@@ -29,6 +29,6 @@ export async function getGeoLocation(destination) {
         }
     } catch (err) {
         console.log(err.message);
-        alert('Server is down');
+        alert('Network error');
     }
 }

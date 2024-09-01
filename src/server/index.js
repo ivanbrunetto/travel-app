@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const geo = require('./geolocation');
+const weather = require('./weatherinfo');
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,18 @@ app.get('/api/latlong', (req, res) => {
     console.log(':: GET /api/latlong');
     const city = req.query.city;
     geo.getLatLong(city).then(latlong => res.send(latlong));
+});
+
+app.get('/api/weather/current', (req, res) => {
+    console.log(':: GET /api/weather/current');
+    const lat = req.query.lat, lng = req.query.lng;
+    weather.getCurrentWeather(lat, lng).then(weatherData => res.send(weatherData));
+});
+
+app.get('/api/weather/forecast', (req, res) => {
+    console.log(':: GET /api/weather/forecast');
+    const lat = req.query.lat, lng = req.query.lng;
+    weather.getWeatherForecast(lat, lng).then(weatherData => res.send(weatherData));
 });
 
 // POST Routes

@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 //import buttonIcon from '../images/remove_circle_32_white.png';
-import { getGeoLocation } from './geolocation';
+//import { getGeoLocation } from './geolocation';
+import { fetchData } from './serverfetch';
 
 const trips = Immutable.List([]);
 
@@ -17,22 +18,13 @@ export async function formHandler(event) {
         return;
     }
 
-    /* if (!await validateGeoLocation(trip)) {
-        return;
-    } */
-
-    getGeoLocation(trip.destination)
-        .then(geoInfo => {
-            if (!geoInfo) {
-                alert(`Invalid destination '${trip.destination}' please try again`);
+    getGeoLocation(trip)
+        .then(() => {
+            if (!validateGeoLocation(trip)) {
                 throw new Error();
             }
-            trip.geoInfo = geoInfo;
         })
-        .then(() => {
-            //TODO: get weatherinfo
-            trip.weather = 'to be defined...'
-        })
+        .then(() => getWeather(trip))
         .then(() => {
             //TODO: get pic
             trip.picSource = '/tbd.png';
@@ -76,13 +68,48 @@ export function validateDuration(trip) {
     return true;
 }
 
-export async function validateGeoLocation(trip) {
-    trip.geoInfo = await getGeoLocation(trip.destination);
+export function validateGeoLocation(trip) {
     if (!trip.geoInfo) {
         alert(`Invalid destination '${trip.destination}' please try again`);
         return false;
     }
     return true;
+}
+
+export async function getGeoLocation(trip) {
+    const data = await fetchData(`/latlong?city=${trip.destination}`);
+    if (data.geonames && data.geonames[0] && trip.destination.toLowerCase() === data.geonames[0].name.toLowerCase()) {
+        trip.geoInfo = {
+            gname: `${data.geonames[0].toponymName}, ${data.geonames[0].countryCode}`,
+            lat: data.geonames[0].lat,
+            lng: data.geonames[0].lng
+        }
+    } else {
+        console.log('Could not find geoinfo with destination name: ', trip.destination);
+    }
+}
+
+export async function getWeather(trip) {
+    //since the weatherbit forecast for free account is limited for max. 7 days (including the current)
+    //we will fetch data only if trip distance is bellow it
+    if (trip.timeDistance > 6) {
+        console.log('Weather forecast longer than 7 days is not supported currently');
+        return;
+    }
+
+    const data = await fetchData(`/weather/forecast?lat=${trip.geoInfo.lat}&lng=${trip.geoInfo.lng}`);
+
+    if (!data) {
+        console.log('Could not get weather from ', trip.geoInfo.gname);
+        return;
+    }
+
+    trip.weatherInfo = {
+        high: data.data[trip.timeDistance].max_temp,
+        low: data.data[trip.timeDistance].min_temp,
+        description: data.data[trip.timeDistance].weather.description,
+        icon: data.data[trip.timeDistance].weather.icon
+    }
 }
 
 
@@ -99,7 +126,7 @@ function renderComponent(trip) {
                         <div class="trip-card__info">
                             <div class="trip-card__text-box">
                                 <p class="trip-card__title">
-                                    My Trip To: ${trip.geoInfo.destination}
+                                    My Trip To: ${trip.destination}
                                 </p>
                                 <p class="trip-card__title">
                                     Departing: ${new Date(trip.departing.getTime() + (trip.departing.getTimezoneOffset() * 60 * 1000)).toDateString()}
@@ -112,14 +139,18 @@ function renderComponent(trip) {
                                 </p>
                             </div>
 
-                            <div class="trip-card__text-box">
+                            ${trip.weatherInfo ? `
+                                <div class="trip-card__text-box">
                                 <p class="trip-card__text">
                                     Typical weather for then is:
                                 </p>
                                 <p class="trip-card__text">
-                                    ${trip.weather}
+                                    High: ${trip.weatherInfo.high}, Low: ${trip.weatherInfo.low}<br>
+                                    ${trip.weatherInfo.description}
                                 </p>
-                            </div>
+                                </div>
+                                ` : ``}
+                            
                         </div>
                         <div class="trip-card__button-container">
                             <button class="trip-card__button">
