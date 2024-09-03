@@ -25,10 +25,7 @@ export async function formHandler(event) {
             }
         })
         .then(() => getWeather(trip))
-        .then(() => {
-            //TODO: get pic
-            trip.picSource = '/tbd.png';
-        })
+        .then(() => getImage(trip))
         .then(() => {
             trips.push(Immutable.Map(trip));
             renderComponent(trip);
@@ -112,6 +109,21 @@ export async function getWeather(trip) {
     }
 }
 
+export async function getImage(trip) {
+    const data = await fetchData(`/image?city=${trip.destination}`);
+
+    if (!data) {
+        console.log('Could not get image for ', trip.destination);
+        return;
+    }
+
+    if (data.total == 0) {
+        return;
+    }
+
+    trip.picSource = data.hits[0].largeImageURL;
+}
+
 
 function renderComponent(trip) {
     const tripCard = document.createElement('div');
@@ -139,17 +151,17 @@ function renderComponent(trip) {
                                 </p>
                             </div>
 
-                            ${trip.weatherInfo ? `
-                                <div class="trip-card__text-box">
+                            <div class="trip-card__text-box">
                                 <p class="trip-card__text">
                                     Typical weather for then is:
                                 </p>
                                 <p class="trip-card__text">
+                                    ${trip.weatherInfo ? `
                                     High: ${trip.weatherInfo.high}, Low: ${trip.weatherInfo.low}<br>
                                     ${trip.weatherInfo.description}
+                                    ` : `Not available`}
                                 </p>
-                                </div>
-                                ` : ``}
+                            </div>
                             
                         </div>
                         <div class="trip-card__button-container">

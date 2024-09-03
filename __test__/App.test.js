@@ -1,9 +1,7 @@
 import { expect, it, jest } from '@jest/globals';
-import { composeBasicTripInfo, validateStartDate, validateDuration, getGeoLocation, validateGeoLocation, getWeather } from '../src/client/js/App';
-//import { getGeoLocation } from '../src/client/js/geolocation';
+import { composeBasicTripInfo, validateStartDate, validateDuration, getGeoLocation, validateGeoLocation, getWeather, getImage } from '../src/client/js/App';
 import { fetchData } from '../src/client/js/serverfetch';
 
-//jest.mock('../src/client/js/geolocation');
 jest.mock('../src/client/js/serverfetch');
 
 it('tests composeBasicTripInfo', () => {
@@ -289,5 +287,54 @@ it('tests getWeather with error', async () => {
 
     fetchData.mockResolvedValue();
     await getWeather(trip);
+    expect(trip).toEqual(expTrip);
+})
+
+it('tests getImage', async () => {
+    const mockServerResp = {
+        total: 1,
+        hits: [
+            {
+                largeImageURL: 'https://image-URL-test'
+            }
+        ]
+    }
+    const trip = {
+        destination: 'Test',
+    };
+
+    const expTrip = { ...trip, picSource: mockServerResp.hits[0].largeImageURL };
+
+    fetchData.mockResolvedValue(mockServerResp);
+    await getImage(trip);
+    expect(trip).toEqual(expTrip);
+})
+
+it('tests getImage with no hits', async () => {
+    const mockServerResp = {
+        total: 0,
+        hits: [
+        ]
+    }
+    const trip = {
+        destination: 'Test',
+    };
+
+    const expTrip = { ...trip };
+
+    fetchData.mockResolvedValue(mockServerResp);
+    await getImage(trip);
+    expect(trip).toEqual(expTrip);
+})
+
+it('tests getImage with error', async () => {
+    const trip = {
+        destination: 'Test',
+    };
+
+    const expTrip = { ...trip };
+
+    fetchData.mockResolvedValue();
+    await getImage(trip);
     expect(trip).toEqual(expTrip);
 })

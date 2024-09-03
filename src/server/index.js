@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const geo = require('./geolocation');
 const weather = require('./weatherinfo');
+const imageret = require('./imageretriever');
 
 const app = express();
 app.use(cors());
@@ -28,6 +29,12 @@ app.get('/api/weather/forecast', (req, res) => {
     const lat = req.query.lat, lng = req.query.lng;
     weather.getWeatherForecast(lat, lng).then(weatherData => res.send(weatherData));
 });
+
+app.get('/api/image', (req, res) => {
+    console.log(':: GET /api/image');
+    const city = req.query.city;
+    imageret.getImage(city).then(imageData => res.send(imageData));
+})
 
 // POST Routes
 
