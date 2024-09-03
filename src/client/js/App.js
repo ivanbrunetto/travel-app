@@ -121,7 +121,10 @@ export async function getImage(trip) {
         return;
     }
 
-    trip.picSource = data.hits[0].largeImageURL;
+    trip.image = {
+        picSource: data.hits[0].largeImageURL,
+        pageURL: data.hits[0].pageURL
+    }
 }
 
 
@@ -130,11 +133,13 @@ function renderComponent(trip) {
     tripCard.setAttribute('class', 'trip-card');
 
     tripCard.innerHTML = `
-    <img
+                        <a href=${trip.image.pageURL}>
+                        <img
                             class="trip-card__image"
-                            src=${trip.picSource}
+                            src=${trip.image.picSource}
                             alt="Destination photo"
                         />
+                        </a>
                         <div class="trip-card__info">
                             <div class="trip-card__text-box">
                                 <p class="trip-card__title">

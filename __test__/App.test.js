@@ -295,7 +295,8 @@ it('tests getImage', async () => {
         total: 1,
         hits: [
             {
-                largeImageURL: 'https://image-URL-test'
+                largeImageURL: 'https://imageURL-test',
+                pageURL: 'https://pageURL-test'
             }
         ]
     }
@@ -303,7 +304,13 @@ it('tests getImage', async () => {
         destination: 'Test',
     };
 
-    const expTrip = { ...trip, picSource: mockServerResp.hits[0].largeImageURL };
+    const expTrip = {
+        ...trip,
+        image: {
+            picSource: mockServerResp.hits[0].largeImageURL,
+            pageURL: mockServerResp.hits[0].pageURL
+        }
+    };
 
     fetchData.mockResolvedValue(mockServerResp);
     await getImage(trip);
