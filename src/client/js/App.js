@@ -133,7 +133,7 @@ const renderComponent = (trip) => {
     tripCard.setAttribute('class', 'trip-card');
 
     tripCard.innerHTML = `
-        <a href=${trip.image.pageURL}>
+        <a class="trip-card__imagecontainer" href=${trip.image.pageURL}>
         <img
             class="trip-card__image"
             src=${trip.image.picSource}

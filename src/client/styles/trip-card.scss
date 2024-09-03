@@ -108,8 +108,10 @@
         font-size: 1.3rem;
     }
 
-    .trip-card__image {
+    .trip-card__imagecontainer {
         grid-area: img;
+    }
+    .trip-card__image {
         max-width: 380px;
         height: 360px;
     }
