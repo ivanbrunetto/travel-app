@@ -6,7 +6,7 @@ const baseURL = 'https://pixabay.com/api/';
 exports.getImage = async (q) => {
     try {
         const fetchURL = `${baseURL}?key=${process.env.pixabay_key}&q=${q}`
-        console.log(fetchURL);
+
         const response = await fetch(fetchURL);
 
         if (!response.ok) {
@@ -36,4 +36,4 @@ exports.getImage = async (q) => {
     }
 }
 
-this.getImage('Campinas').then(result => console.log(result));
+//this.getImage('Campinas').then(result => console.log(result));
