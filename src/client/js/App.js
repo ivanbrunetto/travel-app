@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-//import buttonIcon from '../images/remove_circle_32_white.png';
+import buttonIcon from '../images/remove_circle_32_white.png';
 //import { getGeoLocation } from './geolocation';
 import { fetchData } from './serverfetch';
 
@@ -172,7 +172,7 @@ function renderComponent(trip) {
                         <div class="trip-card__button-container">
                             <button class="trip-card__button">
                                 <img
-                                    src='../images/remove_circle_32_white.png'
+                                    src="${buttonIcon}"
                                     width="20"
                                     alt=""
                                 />
