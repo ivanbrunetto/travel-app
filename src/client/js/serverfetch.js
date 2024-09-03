@@ -1,7 +1,7 @@
 const baseURL = 'http://localhost:8000/api';
 
 
-export async function fetchData(endpoint) {
+export const fetchData = async (endpoint) => {
     try {
         console.log(baseURL + endpoint);
         const response = await fetch(baseURL + endpoint);

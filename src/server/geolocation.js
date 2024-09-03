@@ -33,5 +33,3 @@ exports.getLatLong = async (cityName) => {
     }
 }
 
-//this.getLatLong('city').then(result => console.log(result.data));
-//console.log(username);

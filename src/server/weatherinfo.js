@@ -16,9 +16,6 @@ exports.getWeatherForecast = async (lat, lng) => {
 const getWeather = async (fetchURL, lat, lng) => {
     try {
         const response = await fetch(fetchURL);
-        /* if (!response.ok) {
-            throw new Error(`weatherbit error, response status: ${response.status}`);
-        } */
 
         const json = await response.json();
 
@@ -41,6 +38,3 @@ const getWeather = async (fetchURL, lat, lng) => {
         }
     }
 }
-
-//this.getCurrentWeather('35.7796', '-78.6382').then(result => console.log(result));
-//this.getWeatherForecast('35.7796', '-78.6382').then(result => console.log(result.data.data[0]));

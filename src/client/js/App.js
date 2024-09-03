@@ -1,12 +1,11 @@
 import Immutable from 'immutable';
 import buttonIcon from '../images/remove_circle_32_white.png';
-//import { getGeoLocation } from './geolocation';
 import { fetchData } from './serverfetch';
 
 const trips = Immutable.List([]);
 
 
-export async function formHandler(event) {
+export const formHandler = async (event) => {
     event.preventDefault();
 
     const trip = composeBasicTripInfo();
@@ -36,7 +35,7 @@ export async function formHandler(event) {
 
 }
 
-export function composeBasicTripInfo() {
+export const composeBasicTripInfo = () => {
     const trip = {};
 
     trip.destination = document.getElementById('destination').value;
@@ -45,10 +44,11 @@ export function composeBasicTripInfo() {
     trip.duration = (trip.returning.getTime() - trip.departing.getTime()) / (1000 * 60 * 60 * 24);
     const now = new Date();
     trip.timeDistance = Math.floor((trip.departing.getTime() - now.getTime() + (now.getTimezoneOffset() * 60 * 1000)) / (1000 * 60 * 60 * 24)) + 1;
+
     return trip;
 }
 
-export function validateStartDate(trip) {
+export const validateStartDate = (trip) => {
     if (trip.timeDistance < 0) {
         alert('Trip must not be in the past');
         return false;
@@ -57,7 +57,7 @@ export function validateStartDate(trip) {
 }
 
 
-export function validateDuration(trip) {
+export const validateDuration = (trip) => {
     if (trip.duration <= 0) {
         alert('End date must be greater then start date');
         return false;
@@ -65,7 +65,7 @@ export function validateDuration(trip) {
     return true;
 }
 
-export function validateGeoLocation(trip) {
+export const validateGeoLocation = (trip) => {
     if (!trip.geoInfo) {
         alert(`Invalid destination '${trip.destination}' please try again`);
         return false;
@@ -73,7 +73,7 @@ export function validateGeoLocation(trip) {
     return true;
 }
 
-export async function getGeoLocation(trip) {
+export const getGeoLocation = async (trip) => {
     const data = await fetchData(`/latlong?city=${trip.destination}`);
     if (data.geonames && data.geonames[0] && trip.destination.toLowerCase() === data.geonames[0].name.toLowerCase()) {
         trip.geoInfo = {
@@ -86,7 +86,7 @@ export async function getGeoLocation(trip) {
     }
 }
 
-export async function getWeather(trip) {
+export const getWeather = async (trip) => {
     //since the weatherbit forecast for free account is limited for max. 7 days (including the current)
     //we will fetch data only if trip distance is bellow it
     if (trip.timeDistance > 6) {
@@ -109,7 +109,7 @@ export async function getWeather(trip) {
     }
 }
 
-export async function getImage(trip) {
+export const getImage = async (trip) => {
     const data = await fetchData(`/image?city=${trip.destination}`);
 
     if (!data) {
@@ -128,57 +128,57 @@ export async function getImage(trip) {
 }
 
 
-function renderComponent(trip) {
+const renderComponent = (trip) => {
     const tripCard = document.createElement('div');
     tripCard.setAttribute('class', 'trip-card');
 
     tripCard.innerHTML = `
-                        <a href=${trip.image.pageURL}>
-                        <img
-                            class="trip-card__image"
-                            src=${trip.image.picSource}
-                            alt="Destination photo"
-                        />
-                        </a>
-                        <div class="trip-card__info">
-                            <div class="trip-card__text-box">
-                                <p class="trip-card__title">
-                                    My Trip To: ${trip.destination}
-                                </p>
-                                <p class="trip-card__title">
-                                    Departing: ${new Date(trip.departing.getTime() + (trip.departing.getTimezoneOffset() * 60 * 1000)).toDateString()}
-                                </p>
-                            </div>
+        <a href=${trip.image.pageURL}>
+        <img
+            class="trip-card__image"
+            src=${trip.image.picSource}
+            alt="Destination photo"
+        />
+        </a>
+        <div class="trip-card__info">
+            <div class="trip-card__text-box">
+                <p class="trip-card__title">
+                    My Trip To: ${trip.destination}
+                </p>
+                <p class="trip-card__title">
+                    Departing: ${new Date(trip.departing.getTime() + (trip.departing.getTimezoneOffset() * 60 * 1000)).toDateString()}
+                </p>
+            </div>
 
-                            <div class="trip-card__text-box">
-                                <p class="trip-card__text">
-                                    ${trip.destination} is ${trip.timeDistance} days away!
-                                </p>
-                            </div>
+            <div class="trip-card__text-box">
+                <p class="trip-card__text">
+                    ${trip.destination} is ${trip.timeDistance} days away!
+                </p>
+            </div>
 
-                            <div class="trip-card__text-box">
-                                <p class="trip-card__text">
-                                    Typical weather for then is:
-                                </p>
-                                <p class="trip-card__text">
-                                    ${trip.weatherInfo ? `
-                                    High: ${trip.weatherInfo.high}, Low: ${trip.weatherInfo.low}<br>
-                                    ${trip.weatherInfo.description}
-                                    ` : `Not available`}
-                                </p>
-                            </div>
-                            
-                        </div>
-                        <div class="trip-card__button-container">
-                            <button class="trip-card__button">
-                                <img
-                                    src="${buttonIcon}"
-                                    width="20"
-                                    alt=""
-                                />
-                                &nbsp;&nbsp;Remove
-                            </button>
-                        </div>
+            <div class="trip-card__text-box">
+                <p class="trip-card__text">
+                    Typical weather for then is:
+                </p>
+                <p class="trip-card__text">
+                    ${trip.weatherInfo ? `
+                    High: ${trip.weatherInfo.high}, Low: ${trip.weatherInfo.low}<br>
+                    ${trip.weatherInfo.description}
+                    ` : `Not available`}
+                </p>
+            </div>
+            
+        </div>
+        <div class="trip-card__button-container">
+            <button class="trip-card__button">
+                <img
+                    src="${buttonIcon}"
+                    width="20"
+                    alt=""
+                />
+                &nbsp;&nbsp;Remove
+            </button>
+        </div>
     `;
 
     //add to the DOM

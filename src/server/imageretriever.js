@@ -35,5 +35,3 @@ exports.getImage = async (q) => {
         }
     }
 }
-
-//this.getImage('Campinas').then(result => console.log(result));
