@@ -14,6 +14,20 @@
     margin: 30px;
 }
 
+.trip-card-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: core.$COLOR-GRAY;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-style: italic;
+    color: core.$COLOR-WHITE;
+    width: 100%;
+    height: 520px;
+}
+
 .trip-card {
     display: grid;
     grid-template-columns: auto;
@@ -99,6 +113,12 @@
 }
 
 @media (min-width: 900px) {
+    .trip-card-empty {
+        width: 780px;
+        height: 360px;
+        font-size: 1.3rem;
+    }
+
     .trip-card {
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
@@ -130,6 +150,11 @@
 }
 
 @media (min-width: 1200px) {
+    .trip-card-empty {
+        width: 900px;
+        height: 420px;
+        font-size: 1.4rem;
+    }
     .trip-card {
         max-width: 1400px;
         font-size: 1.4rem;

@@ -129,6 +129,9 @@ export const getImage = async (trip) => {
 
 
 const renderComponent = (trip) => {
+    //hide 'empty' card
+    document.getElementById('trip-card-empty').style.display = 'none';
+
     const tripCard = document.createElement('div');
     tripCard.setAttribute('class', 'trip-card');
 
