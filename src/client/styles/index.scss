@@ -49,9 +49,20 @@ body {
     padding: 20px;
 }
 
+.trip-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+}
+
 /* || ELEMENTS */
 /* no standalone meaning - semantically tied to the block */
 /* naming: .blk__item */
+.trip-list__item {
+    display: flex;
+    flex-direction: column;
+}
 
 /* || MODIFIERS */
 /* inremental style changes  */

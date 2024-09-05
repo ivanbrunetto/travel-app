@@ -7,13 +7,6 @@
 /* || GENERAL STYLES */
 
 /* || BLOCKS */
-.trip-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 30px;
-}
-
 .trip-card-empty {
     display: flex;
     align-items: center;
@@ -43,11 +36,6 @@
 }
 
 /* || ELEMENTS */
-.trip-list__item {
-    display: flex;
-    flex-direction: column;
-}
-
 .trip-card__image {
     width: 100%;
     height: 280px;
