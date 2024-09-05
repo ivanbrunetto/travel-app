@@ -12,9 +12,3 @@ import './styles/add-trip-form.scss';
 import './styles/trip-card.scss';
 
 document.getElementById('add-trip-form').addEventListener('submit', formHandler);
-
-
-
-/* export {
-    app,
-}; */

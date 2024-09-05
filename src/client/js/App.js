@@ -27,7 +27,6 @@ export const formHandler = async (event) => {
         .then(() => getImage(trip))
         .then(() => {
             trips = trips.push(Immutable.Map(trip));
-            console.log(trips.size);
             renderComponent(trip);
         })
         .catch(error => {

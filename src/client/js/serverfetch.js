@@ -3,7 +3,6 @@ const baseURL = 'http://localhost:8000/api';
 
 export const fetchData = async (endpoint) => {
     try {
-        console.log(baseURL + endpoint);
         const response = await fetch(baseURL + endpoint);
 
         const json = await response.json();
