@@ -20,9 +20,6 @@
     "url": "https://github.com/ivanbrunetto/travel-app/issues"
   },
   "description": "Travel App project",
-  "jest": {
-    "testEnvironment": "jsdom"
-  },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.2",
