@@ -2,8 +2,7 @@
 
 Capstone Project taken from Udacity **Front End Web Developer** Nanodegree course.
 
-It consists of a simple form where you enter the location you are traveling to and the date you are leaving. If the trip is within a week, you will get the current weather forecast. If the trip is in the future, you will get a predicted forecast.
-
+It consists of a simple form where you enter the location you are traveling to and the dates of your trip. If the trip is within 6 days, you will get the weather forecast.
 
 Following are the project prerequisites:
 
@@ -11,7 +10,7 @@ Following are the project prerequisites:
 - Web application framework for routing - Express
 - Build tool - Webpack
 - External script - Service Worker
-- External API - Openweather, Geonames, Weatherbit
+- External API - Geonames, Weatherbit, Pixabay
 
 # Usage
 
@@ -19,20 +18,18 @@ git clone https://github.com/ivanbrunetto/travel-app.git
 
 `cd` into evaluate-news-nlp folder and run:
 - `npm install`
-- `npm build-prod`
-- `npm run start`
+- `npm run build`
+- `npm start`
 
 Get valid API keys at:
-- https://openweathermap.org/
 - https://www.geonames.org/
 - https://www.weatherbit.io/
 - https://pixabay.com/
 
 create .env file at the project root folder and add your API keys as:
-`owm-key=<your key value>`
-`gn-key=<your key value>`
-`wb-key=<your key value>`
-`pb-key=<your key value>`
+`geonames_username=<your key value>`
+`weatherbit_apiKey=<your key value>`
+`pixabay_key=<your key value>`
 
 Open web browser and go to 'localhost:8000'
 
