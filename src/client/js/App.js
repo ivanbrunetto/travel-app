@@ -2,7 +2,7 @@ import Immutable from 'immutable';
 import buttonIcon from '../images/remove_circle_32_white.png';
 import { fetchData } from './serverfetch';
 
-const trips = Immutable.List([]);
+let trips = Immutable.List([]);
 
 
 export const formHandler = async (event) => {
@@ -26,7 +26,8 @@ export const formHandler = async (event) => {
         .then(() => getWeather(trip))
         .then(() => getImage(trip))
         .then(() => {
-            trips.push(Immutable.Map(trip));
+            trips = trips.push(Immutable.Map(trip));
+            console.log(trips.size);
             renderComponent(trip);
         })
         .catch(error => {
@@ -134,6 +135,7 @@ const renderComponent = (trip) => {
 
     const tripCard = document.createElement('div');
     tripCard.setAttribute('class', 'trip-card');
+    //tripCard.setAttribute('data-position', trips.size - 1);
 
     tripCard.innerHTML = `
         <a class="trip-card__imagecontainer" href=${trip.image.pageURL}>
@@ -184,7 +186,22 @@ const renderComponent = (trip) => {
         </div>
     `;
 
+    //add button handler
+    tripCard.getElementsByClassName('trip-card__button')[0].addEventListener('click', removeCardHandler);
+
     //add to the DOM
     const tripListElement = document.getElementById('trip-list');
     tripListElement.appendChild(tripCard);
+}
+
+const removeCardHandler = (event) => {
+    const cardElement = event.currentTarget.parentElement.parentElement;
+    const tripElements = document.getElementsByClassName('trip-card');
+    trips = trips.delete([...tripElements].indexOf(cardElement));
+    cardElement.remove();
+
+    if (trips.isEmpty()) {
+        document.getElementById('trip-card-empty').style.display = 'flex';
+    }
+
 }
