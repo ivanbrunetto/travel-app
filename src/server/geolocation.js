@@ -1,7 +1,7 @@
-dotenv = require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 
-const URL = 'http://api.geonames.org/'
+const URL = 'http://api.geonames.org'
 const username = process.env.geonames_username;
 
 exports.getLatLong = async (cityName) => {

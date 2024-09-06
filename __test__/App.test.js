@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { expect, it, jest } from '@jest/globals';
 import { composeBasicTripInfo, validateStartDate, validateDuration, getGeoLocation, validateGeoLocation, getWeather, getImage } from '../src/client/js/App';
 import { fetchData } from '../src/client/js/serverfetch';

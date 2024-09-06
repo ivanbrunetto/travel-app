@@ -1,4 +1,4 @@
-dotenv = require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const baseURL = 'https://pixabay.com/api/';

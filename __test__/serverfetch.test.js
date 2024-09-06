@@ -1,3 +1,8 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import { expect, it, jest } from '@jest/globals';
 import { fetchData } from '../src/client/js/serverfetch';
 
 it('tests fetchData with network error', async () => {
