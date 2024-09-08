@@ -35,4 +35,5 @@ Open web browser and go to 'localhost:8000'
 
 # Dependencies 
 
-Check package.json file for more information
+ - Node v22.4.1
+ - for other dependencies, please check package.json file
