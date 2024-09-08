@@ -31,8 +31,10 @@ export const formHandler = async (event) => {
         })
         .catch(error => {
             console.log(error);
+            return;
         })
 
+    renderCardSkeleton();
 }
 
 export const composeBasicTripInfo = () => {
@@ -127,21 +129,26 @@ export const getImage = async (trip) => {
     }
 }
 
-
-const renderComponent = (trip) => {
+const renderCardSkeleton = () => {
     //hide 'empty' card
     document.getElementById('trip-card-empty').style.display = 'none';
 
+    const tripList = document.getElementById('trip-list');
+    const cardTemplate = document.getElementById('trip-card-template');
+    tripList.appendChild(cardTemplate.content.cloneNode(true));
+}
+
+const renderComponent = (trip) => {
     const tripCard = document.createElement('div');
     tripCard.setAttribute('class', 'trip-card');
-    //tripCard.setAttribute('data-position', trips.size - 1);
 
     tripCard.innerHTML = `
         <a class="trip-card__imagecontainer" href=${trip.image.pageURL}>
         <img
-            class="trip-card__image"
+            class="trip-card__image skeleton"
             src=${trip.image.picSource}
             alt="Destination photo"
+            onload="event.currentTarget.classList.remove('skeleton')"
         />
         </a>
         <div class="trip-card__info">
@@ -188,9 +195,11 @@ const renderComponent = (trip) => {
     //add button handler
     tripCard.getElementsByClassName('trip-card__button')[0].addEventListener('click', removeCardHandler);
 
+    const tripList = document.getElementById('trip-list');
+    //remove skeleton
+    tripList.lastElementChild.remove();
     //add to the DOM
-    const tripListElement = document.getElementById('trip-list');
-    tripListElement.appendChild(tripCard);
+    tripList.appendChild(tripCard);
 }
 
 const removeCardHandler = (event) => {

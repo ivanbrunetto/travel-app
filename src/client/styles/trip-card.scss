@@ -3,7 +3,32 @@
 /* || VARIABLES */
 
 /* || UTILITY CLASSES */
+.skeleton {
+    opacity: 0.7;
+    animation: skeleton-loading 1s linear infinite alternate;
+}
 
+.skeleton-text {
+    width: 100%;
+    height: 0.5em;
+    margin-bottom: 0.25em;
+    border-radius: 0.125em;
+}
+
+.skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 70%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
 /* || GENERAL STYLES */
 
 /* || BLOCKS */
@@ -17,8 +42,8 @@
     font-weight: bold;
     font-style: italic;
     color: core.$COLOR-WHITE;
-    width: 100%;
-    height: 520px;
+    width: 360px;
+    height: 420px;
 }
 
 .trip-card {
@@ -37,7 +62,7 @@
 
 /* || ELEMENTS */
 .trip-card__image {
-    width: 100%;
+    width: 340px;
     height: 280px;
     object-fit: cover;
     border-radius: 30px;
@@ -80,13 +105,18 @@
 /* || MEDIA SELECTORS */
 
 @media (min-width: 600px) {
+    .trip-card-empty {
+        width: 500 px;
+        height: 580px;
+    }
     .trip-card {
         font-size: 1.2rem;
         margin-bottom: 18px;
     }
 
     .trip-card__image {
-        height: 320px;
+        width: 480px;
+        height: 380px;
     }
 
     .trip-card__text-box {
@@ -102,8 +132,8 @@
 
 @media (min-width: 900px) {
     .trip-card-empty {
-        width: 780px;
-        height: 360px;
+        width: 900px;
+        height: 400px;
         font-size: 1.3rem;
     }
 
@@ -120,12 +150,14 @@
         grid-area: img;
     }
     .trip-card__image {
-        max-width: 380px;
-        height: 360px;
+        width: 480px;
+        height: 380px;
     }
 
     .trip-card__info {
         grid-area: info;
+        width: 400px;
+        height: 300px;
     }
 
     .trip-card__text-box {
@@ -139,10 +171,11 @@
 
 @media (min-width: 1200px) {
     .trip-card-empty {
-        width: 900px;
+        width: 1000px;
         height: 420px;
         font-size: 1.4rem;
     }
+
     .trip-card {
         max-width: 1400px;
         font-size: 1.4rem;
@@ -151,8 +184,13 @@
     }
 
     .trip-card__image {
-        max-width: 460px;
+        width: 520px;
         height: 400px;
+    }
+
+    .trip-card__info {
+        width: 440px;
+        height: 340px;
     }
 
     .trip-card__text-box {
